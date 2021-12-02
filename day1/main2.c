@@ -38,7 +38,7 @@ int	main(void)
 	int		counter;
 
 	counter = 0;
-	fd = open("./input.txt", O_RDONLY);
+	fd = open("./test.txt", O_RDONLY);
 	num = ft_calloc(sizeof(int), 4);
 	while (get_next_line(fd, &str) && counter < 4)
 	{
@@ -56,6 +56,11 @@ int	main(void)
 		if (num[3] > num[0])
 			counter++;
 	}
+	shift_down(&num);
+	num[3] = ft_atoi(str);
+	free(str);
+	if (num[3] > num[0])
+		counter++;
 	ft_putnbr_fd(counter, 1);
 	return (counter);
 }
